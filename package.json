@@ -18,7 +18,7 @@
   "homepage": "https://github.com/briangzimmerman/nearby_buses#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "handlebars": "^4.1.2",
+    "hbs": "^4.0.4",
     "public-ip": "^3.1.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",

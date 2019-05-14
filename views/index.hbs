@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bus Locations</title>
+    <link rel='stylesheet' href='/css/main.css'>
+    <link rel='stylesheet' href='/css/nav.css'>
+    <link rel='stylesheet' href='/css/index.css'>
+</head>
+<body>
+    {{> nav}}
+
+    <main>
+        <div id='bus_container'>
+
+        </div>
+
+        <div id='map_container'>
+
+        </div>
+    </main>
+
+    <script type='text/template' id='bus_prediction_template'>
+        <div class='prediction'>
+            <div class='prediction-sprite'>
+                <i class='fas fa-bus'></i>
+            </div>
+            <div class='prediction-info'>
+                <span class='route'>{{route}}</span>
+                <span class='arrival'>
+                    {{stop_name}}: {{eta}}
+                </span>
+            </div>
+        </div>
+    </script>
+    <script src='/js/jquery-3.4.1.min.js'></script>
+    <script src='/font-awesome-5.8.2/js/all.js'></script>
+    <script src='/js/moment.js'></script>
+    <script src='/js/socket.io.js'></script>
+    <script src='/js/mustache.js'></script>
+    <script src='/js/index.js'></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+#logo {
+    height: 125px;
+    z-index: 10;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+
+#titlebar {
+    width: 100vw;
+    background-color: #0078c1;
+    height: 100px;
+}
+
+#titlebar-lip {
+    height: 150px;
+    background-color: #0078c1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 150px;
+    border-bottom-right-radius: 67px;
+}
