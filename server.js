@@ -37,14 +37,6 @@ io.on('connection', (socket) => {
 
     socket.emit('bus_predictions', bus_predictions);
     socket.emit('bus_locations', bus_locations);
-
-    socket.on('disconnect', () => {
-        if(!io.engine.clientsCount) {
-            clearInterval(refresh_interval);
-            bus_locations = [];
-            bus_predictions = [];
-        }
-    });
 });
 
 //------------------------------------------------------------------------------
@@ -52,6 +44,8 @@ io.on('connection', (socket) => {
 
 function createInterval() {
     return setInterval(() => {
+        if(!io.engine.clientsCount) { return; }
+
         io.emit('bus_predictions', [
             {
               "stop_name": "Marine Drive & Bittersweet",

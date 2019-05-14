@@ -22,11 +22,11 @@ socket.on('bus_predictions', function(bus_predictions) {
 });
 
 function getEta(arrival) {
-    var diff = Date.now() - moment(arrival, 'YYYYMMDD HH:mm').valueOf();
+    var diff = moment(arrival, 'YYYYMMDD HH:mm').valueOf() - Date.now();
     if(diff < 60000) {
         return 'Less than 1 minute';
     } else {
         var minutes = Math.round(diff / 60000);
-        return minutes + ' minute' + minutes > 1 ? 's' : '';
+        return minutes + ' minute' + (minutes > 1 ? 's' : '');
     }
 }

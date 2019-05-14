@@ -1,4 +1,37 @@
 #bus_container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    width: 50%;
+    font-family: 'Lato';
+    font-size: 15px;
+}
+
+#map_container {
+    width: 50%;
+}
+
+main {
+    top: 160px;
+    position: absolute;
+    width: 100vw;
+}
+
+/* .prediction-sprite, .prediction-info {
+    display: inline-block;
+} */
+
+.prediction {
+    display: flex;
+    padding: 15px;
+}
+
+.prediction-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    justify-content: center;
+}
+
+.prediction-info .route {
+    font-weight: bold;
 }

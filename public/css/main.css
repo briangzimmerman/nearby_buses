@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Regular.ttf');
+}
+
 * {
     padding: 0;
     margin: 0;
     flex-shrink: 0;
-    font-family: 'Open_Sans';
+    /* font-family: 'Open_Sans'; */
+    box-sizing: border-box;
 }
