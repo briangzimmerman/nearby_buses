@@ -1,0 +1,29 @@
+{
+  "name": "nearby_buses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briangzimmerman/nearby_buses.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/briangzimmerman/nearby_buses/issues"
+  },
+  "homepage": "https://github.com/briangzimmerman/nearby_buses#readme",
+  "dependencies": {
+    "csv-parse": "^4.4.1",
+    "express": "^4.16.4",
+    "geolib": "^2.0.24",
+    "handlebars": "^4.1.2",
+    "public-ip": "^3.1.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "socket.io": "^2.2.0"
+  }
+}
