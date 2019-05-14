@@ -1,8 +1,8 @@
-const config = require('../../config.json');
+const config = require(__dirname+'/../../config.json');
 const publicIp = require('public-ip');
 const rp = require('request-promise');
 
-function getZip() {
+function getLocation() {
     return publicIp.v4()
     .then((ip) => {
         return rp({
@@ -14,10 +14,10 @@ function getZip() {
         })
     })
     .then((ip_data) => {
-        return ip_data.zip
+        return ip_data
     });
 }
 
 module.exports = {
-    getZip
+    getLocation
 };
