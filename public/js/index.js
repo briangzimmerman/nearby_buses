@@ -14,18 +14,25 @@ var styles = {
 };
 var bus_layer = new ol.layer.Vector({
     style: function(feature) {
-        return new ol.style.Style({
-            image: new ol.style.Icon({
-                anchor: [0.5, 1],
-                src: '/images/bus_marker2.png',
-                scale: .2,
-                // text: new ol.style.Text({
-                //     text: feature.get('rt')+'-'+feature.get('dest'),
-                //     textBaseLine: 'top',
-                //     scale: 1
-                // })
+        return [
+            new ol.style.Style({
+                text: new ol.style.Text({
+                    text: feature.get('rt')+' - '+feature.get('dest'),
+                    textBaseLine: 'bottom',
+                    backgroundFill: new ol.style.Fill({color: '#333'}),
+                    fill: new ol.style.Fill({color: '#fff'}),
+                    padding: [2, 2, 2, 2],
+                    offsetY: -58
+                })
+            }),
+            new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1],
+                    src: '/images/bus_marker2.png',
+                    scale: .2,
+                })
             })
-        })
+        ];
     }
 });
 
