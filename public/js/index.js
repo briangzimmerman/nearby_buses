@@ -21,6 +21,44 @@ socket.on('bus_predictions', function(bus_predictions) {
     });
 });
 
+//------------------------------------------------------------------------------
+//Map
+
+if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var map = new ol.Map({
+            target: 'map_container',
+            layers: [
+                new ol.layer.Tile({
+                  source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([
+                    position.coords.longitude,
+                    position.coords.latitude
+                ]),
+                zoom: 14
+            })
+        });
+    });
+} else {
+    var map = new ol.Map({
+        target: 'map_container',
+        layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([-87.623177, 41.881832]),
+            zoom: 12
+        })
+    });
+}
+
+//------------------------------------------------------------------------------
+
 function getEta(arrival) {
     var diff = moment(arrival, 'YYYYMMDD HH:mm').valueOf() - Date.now();
     if(diff < 60000) {
