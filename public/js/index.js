@@ -12,9 +12,20 @@ var styles = {
         })
     })
 };
-var layer = new ol.layer.Vector({
+var bus_layer = new ol.layer.Vector({
     style: function(feature) {
-        return styles[feature.get('type')];
+        return new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                src: '/images/bus_marker2.png',
+                scale: .2,
+                // text: new ol.style.Text({
+                //     text: feature.get('rt')+'-'+feature.get('dest'),
+                //     textBaseLine: 'top',
+                //     scale: 1
+                // })
+            })
+        })
     }
 });
 
@@ -27,11 +38,13 @@ socket.on('bus_locations', function(bus_locations) {
         console.log(location);
         buses.push(new ol.Feature({
             type: 'bus_marker',
+            rt: location.rt,
+            dest: location.dest,
             geometry: new ol.geom.Point(ol.proj.fromLonLat([location.lon, location.lat]))
         }));
     });
 
-    layer.setSource(new ol.source.Vector({
+    bus_layer.setSource(new ol.source.Vector({
         features: buses
     }));
 });
@@ -89,7 +102,7 @@ function createMap(lon, lat, zoom) {
             new ol.layer.Tile({
               source: new ol.source.OSM()
             }),
-            layer
+            bus_layer
         ],
         view: new ol.View({
             center: ol.proj.fromLonLat([lon, lat]),
