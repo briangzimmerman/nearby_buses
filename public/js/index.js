@@ -40,6 +40,13 @@ socket.on('bus_predictions', function(bus_predictions) {
     $bus_predictions.html('');
     console.log(bus_predictions);
 
+    bus_predictions.sort(function(a, b) {
+        if(a.rt - b.rt) { return a.rt - b.rt }
+        else if(a.dest < b.dest) { return -1; }
+        else if(a.dest > b.dest) { return 1; }
+        else { return 0; }
+    });
+
     bus_predictions.forEach(function(prediction) {
         $bus_predictions.append(Mustache.render(bus_prediction_template, {
             route: prediction.rt + ' - ' + prediction.dest,
