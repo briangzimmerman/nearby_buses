@@ -4,6 +4,9 @@
     width: 47%;
     font-family: 'Lato';
     font-size: 15px;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #map_container {
@@ -26,6 +29,11 @@ main {
 .prediction {
     display: flex;
     padding: 15px;
+}
+
+.prediction-sprite {
+    display: flex;
+    align-items: center;
 }
 
 .prediction-info {
