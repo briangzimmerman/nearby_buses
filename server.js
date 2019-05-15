@@ -57,5 +57,5 @@ function createInterval() {
             io.emit('bus_locations', locations);
         });
 
-    }, 10000);
+    }, 30000);
 }
