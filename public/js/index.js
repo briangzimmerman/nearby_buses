@@ -62,7 +62,7 @@ if(navigator.geolocation) {
 function getEta(arrival) {
     var diff = moment(arrival, 'YYYYMMDD HH:mm').valueOf() - Date.now();
     if(diff < 60000) {
-        return 'Less than 1 minute';
+        return '< 1 minute';
     } else {
         var minutes = Math.round(diff / 60000);
         return minutes + ' minute' + (minutes > 1 ? 's' : '');

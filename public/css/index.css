@@ -3,7 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     width: 47%;
     font-family: 'Lato';
-    font-size: 15px;
+    font-size: 14px;
     max-height: calc(100vh - 160px);
     overflow-y: auto;
     overflow-x: hidden;
@@ -45,4 +45,16 @@ main {
 
 .prediction-info .route {
     font-weight: bold;
+}
+
+@media screen and (min-width: 1066px) and (max-width: 1215px) {
+    .prediction-sprite {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1065px) {
+    #bus_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
