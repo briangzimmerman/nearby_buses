@@ -52,8 +52,8 @@ function getLocations() {
         response['bustime-response'].vehicle.forEach((bus) => {
             bus_info.push({
                 vid: bus.vid,
-                lat: bus.lat,
-                lon: bus.lon,
+                lat: bus.lat * 1,
+                lon: bus.lon * 1,
                 rt: bus.rt,
                 dest: bus.des
             });
