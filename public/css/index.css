@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 47%;
-    font-family: 'Lato';
+    font-family: 'Ubuntu';
+    /* font-family: 'Lato'; */
     font-size: 14px;
     max-height: calc(100vh - 160px);
     overflow-y: auto;

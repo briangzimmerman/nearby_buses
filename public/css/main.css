@@ -3,6 +3,16 @@
     src: url('/fonts/Lato/Lato-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'PT_Sans';
+    src: url('/fonts/PT_Sans/PT_Sans-Web-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/Ubuntu/Ubuntu-Regular.ttf');
+}
+
 * {
     padding: 0;
     margin: 0;

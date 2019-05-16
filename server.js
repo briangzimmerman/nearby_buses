@@ -6,7 +6,6 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-var refresh_interval = false;
 var bus_predictions = [];
 var bus_locations = [];
 
@@ -25,37 +24,41 @@ app.get('/', (req, res) => {
     res.render('index.hbs');
 });
 
+setInterval(update, 30000)
+
 //------------------------------------------------------------------------------
 //Socket stuff
 
 io.on('connection', (socket) => {
     console.log('User connected');
 
-    if(!refresh_interval) {
-        refresh_interval = createInterval();
+    if(bus_predictions.length) {
+        socket.emit('bus_predictions', bus_predictions);
+        socket.emit('bus_locations', bus_locations);
+    } else {
+        update();
     }
-
-    socket.emit('bus_predictions', bus_predictions);
-    socket.emit('bus_locations', bus_locations);
+    
 });
 
 //------------------------------------------------------------------------------
 //Functions
 
-function createInterval() {
-    return setInterval(() => {
-        if(!io.engine.clientsCount) { return; }
+function update() {
+    if(!io.engine.clientsCount) {
+        bus_predictions = [];
+        bus_locations = [];
+        return;
+    }
 
-        bus.getPredictions()
-        .then((predictions) => {
-            io.emit('bus_predictions', predictions);
-            bus_predictions = predictions;
-            return bus.getLocations();
-        })
-        .then((locations) => {
-            bus_locations = locations;
-            io.emit('bus_locations', locations);
-        });
-
-    }, 30000);
+    bus.getPredictions()
+    .then((predictions) => {
+        io.emit('bus_predictions', predictions);
+        bus_predictions = predictions;
+        return bus.getLocations();
+    })
+    .then((locations) => {
+        bus_locations = locations;
+        io.emit('bus_locations', locations);
+    });
 }
