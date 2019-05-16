@@ -23,7 +23,7 @@ var bus_layer = new ol.layer.Vector({
                     fill: new ol.style.Fill({color: '#fff'}),
                     padding: [2, 2, 2, 2],
                     offsetY: -58,
-                    font: '12px Ubuntu'
+                    font: '13px Ubuntu'
                 })
             }),
             new ol.style.Style({
