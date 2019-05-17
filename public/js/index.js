@@ -77,19 +77,9 @@ socket.on('bus_predictions', function(bus_predictions) {
     });
 });
 
-//------------------------------------------------------------------------------
-//Map
-
-if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        map = createMap(position.coords.longitude, position.coords.latitude, 14);
-    }, function(error) {
-        console.log(error);
-        map = createMap(-87.623177, 41.881832, 12);
-    });
-} else {
-    map = createMap(-87.623177, 41.881832, 12);
-}
+socket.on('location', function(location) {
+    map = createMap(location.lon, location.lat, 14);
+});
 
 //------------------------------------------------------------------------------
 

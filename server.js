@@ -1,5 +1,6 @@
 const config = require(__dirname+'/config.json');
 const bus = require(__dirname+'/modules/api/cta_bus');
+const ipstack = require(__dirname+'/modules/api/ipstack');
 const hbs = require('hbs');
 const express = require('express');
 const app = express();
@@ -8,6 +9,8 @@ const io = require('socket.io')(server);
 
 var bus_predictions = [];
 var bus_locations = [];
+var lat = null;
+var lon = null;
 
 //------------------------------------------------------------------------------
 //Server stuff
@@ -26,11 +29,21 @@ app.get('/', (req, res) => {
 
 setInterval(update, 30000)
 
+ipstack.getLocation()
+.then((location) => {
+    lat = location.latitude;
+    lon = location.longitude;
+
+    io.emit('location', {lat, lon});
+});
+
 //------------------------------------------------------------------------------
 //Socket stuff
 
 io.on('connection', (socket) => {
     console.log('User connected');
+
+    socket.emit('location', {lat, lon});
 
     if(bus_predictions.length) {
         socket.emit('bus_predictions', bus_predictions);
@@ -38,7 +51,6 @@ io.on('connection', (socket) => {
     } else {
         update();
     }
-    
 });
 
 //------------------------------------------------------------------------------
